@@ -12,11 +12,14 @@
 
 
 		<!-- Database connection settings -->
+		<!-- <property name="connection.driver_class">org.postgresql.Driver</property> 
+			<property name="connection.url">jdbc:postgresql://ec2-23-21-244-254.compute-1.amazonaws.com:5432/dfubjb9egaeq50</property> 
+			<property name="connection.username">wikovyuzakmmot</property> <property 
+			name="connection.password">4f68b3981ad7d3665e52371a0199f91a13a6e56f2f6ca714677e2d94c65c8202</property> -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="connection.url">jdbc:postgresql://localhost:5432/hibernatedb</property>
 		<property name="connection.username">postgres</property>
 		<property name="connection.password">gh1pv376</property>
-
 		<!-- JDBC connection pool (use the built-in) -->
 
 		<!-- SQL dialect -->
@@ -29,7 +32,9 @@
 
 		<mapping class="com.rms.hibernate.UserDetails" />
 		<mapping class="com.rms.hibernate.Vehicle" />
-		
+		<mapping class="com.rms.hibernate.model.Client" />
+		<mapping class="com.rms.hibernate.model.Post" />
+
 
 	</session-factory>
 

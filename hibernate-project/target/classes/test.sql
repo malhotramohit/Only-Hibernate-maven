@@ -2,7 +2,26 @@
 CREATE SEQUENCE USER_DETAILS_SEQ;
 CREATE SEQUENCE VEHICLE_SEQ;
 
+CREATE SEQUENCE CLIENT_SEQ
+CREATE SEQUENCE POST_SEQ
+
 drop sequence USER_DETAILS_SEQ;
+drop sequence POST_SEQ;
+drop sequence CLIENT_SEQ;
+
+
+create sequence POST_SEQ
+       MINVALUE 1 
+       MAXVALUE 9999999
+       START WITH 1
+       INCREMENT BY 1 ;
+       
+
+create sequence CLIENT_SEQ
+       MINVALUE 1 
+       MAXVALUE 9999999
+       START WITH 1
+       INCREMENT BY 1 ;
 
 select * from vehicle;
 
@@ -19,15 +38,6 @@ select * from USER_DETAILS;
       4 CA          Rohit
 
 
-
-select * from USER_DETAILS_VEHICLE;
-
- user_details_userid vehiclelist_vehicleid
- ------------------- ---------------------
-                   3                     1
-                   3                     2
-                   4                     1
-                   4                     2
 
 
 select * from VEHICLE_USER_DETAILS;
