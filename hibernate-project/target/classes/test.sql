@@ -48,3 +48,7 @@ select * from VEHICLE_USER_DETAILS;
                  1                      4
                  2                      3
                  2                      4
+
+                 
+                 
+                 select * from Car_Client;

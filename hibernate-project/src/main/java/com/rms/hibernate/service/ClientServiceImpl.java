@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.rms.hibernate.dao.ClientDao;
 import com.rms.hibernate.dao.ClientDaoImpl;
+import com.rms.hibernate.model.Car;
 import com.rms.hibernate.model.Client;
 
 public class ClientServiceImpl implements ClientService {
@@ -33,6 +34,16 @@ public class ClientServiceImpl implements ClientService {
 	public Client delete(Client client) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Object save(Car car1) {
+		// TODO Auto-generated method stub
+		return clientDao.save(car1);
+	}
+
+	public void findClientByCarId(Long long1) {
+		// TODO Auto-generated method stub
+		clientDao.findClientByCarId(long1);
 	}
 
 }

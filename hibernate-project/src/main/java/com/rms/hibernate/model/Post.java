@@ -69,4 +69,9 @@ public class Post {
 		this.client = client;
 	}
 
+	@Override
+	public String toString() {
+		return "Post [seq=" + seq + ", content=" + content + ", postDate=" + postDate + "]";
+	}
+
 }
