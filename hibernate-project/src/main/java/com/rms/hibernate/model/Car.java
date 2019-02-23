@@ -7,20 +7,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
+@NamedQueries({
+		@NamedQuery(name = "Car.findCarByCarId", query = "select car from Car car where car.carId = :carId"),
+		@NamedQuery(name ="Car.findCarAndClientByCarId",query = "select car,client from Car car join car.clientList client where car.carId = :carId")
+})
 @Entity
 public class Car {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long carId;
-	
+
+	@Override
+	public String toString() {
+		return "Car [carId=" + carId + ", carName=" + carName + "]";
+	}
+
 	private String carName;
-	
-	@ManyToMany(mappedBy = "carList" )
+
+	@ManyToMany(mappedBy = "carList")
 	private List<Client> clientList;
-	
-	
 
 	public Car(String carName, List<Client> clientList) {
 		super();
@@ -56,8 +65,5 @@ public class Car {
 	public void setClientList(List<Client> clientList) {
 		this.clientList = clientList;
 	}
-	
-	
-	
-	
+
 }

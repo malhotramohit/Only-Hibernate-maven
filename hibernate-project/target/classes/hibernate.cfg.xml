@@ -35,6 +35,7 @@
 		<mapping class="com.rms.hibernate.model.Client" />
 		<mapping class="com.rms.hibernate.model.Post" />
 		<mapping class="com.rms.hibernate.model.Car" />
+		<mapping class="com.rms.hibernate.model.Job" />
 
 
 

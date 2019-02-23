@@ -2,25 +2,35 @@ package com.rms.hibernate.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /*
  * @NamedQuery(name = "Client.findClientByCarId", query = "select client from Client client where client.Car_client.car_id = :car_id")
  * */
-@Entity
-@NamedQueries({ @NamedQuery(name = "Client.getAll", query = "Select client from Client client"),
+//select e, m.id from SomeEntity e LEFT JOIN e.manyToMany m
+@Entity(name = "Client")
+@Table(name = "Client")
+@NamedQueries({
+		@NamedQuery(name = "Client.findClientByClientId", query = "select client from Client client where client.user_id = :user_id"),
+		@NamedQuery(name = "Client.findClientAndJob", query = "select client , job from Client client join client.job job"),
+		@NamedQuery(name = "Client.getAll", query = "Select client from Client client"),
 		@NamedQuery(name = "Client.findClientByCarId", query = "select client from Client client  join client.carList car where car.carId = :car_id") })
+
 public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENT_SEQ_GEN")
@@ -29,11 +39,15 @@ public class Client {
 	private String name;
 	private String description;
 
+	@OneToOne
+	@JoinColumn(name = "jobId")
+	private Job job;
+
 	// one to many
 	@OneToMany(mappedBy = "client")
 	private List<Post> posts;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Car_client", joinColumns = @JoinColumn(name = "client_Id"), inverseJoinColumns = @JoinColumn(name = "car_id"))
 	private List<Car> carList;
 
@@ -98,10 +112,17 @@ public class Client {
 		this.carList = carList;
 	}
 
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [user_id=" + user_id + ", name=" + name + ", description=" + description + ", posts=" + posts
-				+ "]";
+		return "Client [user_id=" + user_id + ", name=" + name + ", description=" + description + "]";
 	}
 
 }

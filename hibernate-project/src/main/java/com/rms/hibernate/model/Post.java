@@ -8,8 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 
+@NamedQueries({@NamedQuery(name = "Post.findPostByPostId", query = "select post from Post post where post.seq = :seq"),
+			@NamedQuery(name = "Post.findPostAndClientByPostId", query = "select posts,client from Client client join client.posts posts where posts.seq = :seq ")})
 @Entity
 public class Post {
 
@@ -73,5 +77,6 @@ public class Post {
 	public String toString() {
 		return "Post [seq=" + seq + ", content=" + content + ", postDate=" + postDate + "]";
 	}
+
 
 }

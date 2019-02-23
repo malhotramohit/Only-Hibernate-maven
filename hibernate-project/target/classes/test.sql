@@ -51,4 +51,9 @@ select * from VEHICLE_USER_DETAILS;
 
                  
                  
-                 select * from Car_Client;
+select * from client c , post p where c.user_id = p.user_id and p.seq = 1
+
+select * from car_client;
+
+select cl,ca from client cl , car ca,  car_client cal where cl.user_id = cal.client_Id and ca.carId  = car_id and ca.carId =5
+select job from Job job
