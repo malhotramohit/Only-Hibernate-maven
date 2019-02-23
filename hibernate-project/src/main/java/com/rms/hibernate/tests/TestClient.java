@@ -179,6 +179,12 @@ public class TestClient {
 		session.saveOrUpdate((job2));
 		session.saveOrUpdate((client));
 		session.saveOrUpdate((client1));
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		session.saveOrUpdate((client2));
 		session.saveOrUpdate((client3));
 		session.saveOrUpdate((client4));
@@ -242,12 +248,7 @@ public class TestClient {
 
 		session.close();
 
-		session = sessionFactory.openSession();
-		// String str = "select cl from client cl where cl.user_id = :user_id";
-		Query query1 = session.createNativeQuery("select job from Job job");
-		List<Object[]> list3 = query1.getResultList();
-
-		session.close();
+		
 
 		// Client.findClientAndJob
 

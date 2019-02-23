@@ -29,6 +29,11 @@
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">create</property>
+		
+		<property name="hibernate.c3p0.min_size">7</property>
+	<property name="hibernate.c3p0.max_size">53</property>
+	<property name="hibernate.c3p0.timeout">100</property>
+	<property name="hibernate.c3p0.max_statements">50</property>
 
 		<mapping class="com.rms.hibernate.UserDetails" />
 		<mapping class="com.rms.hibernate.Vehicle" />
